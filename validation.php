@@ -31,10 +31,10 @@ Description:
 <?php
   # SQL DATABASE INFO HERE!!!!!!!!!!!!!!!!!!!
   $dbhost = 'studentdb-maria.gl.umbc.edu';
-  $dbuser = 'XX';
-  $dbpass = 'XX';
+  $dbuser = 'mlanden';
+  $dbpass = 'cmsc433';
   // usually same as the username if using gl database 
-  $dbName = 'XX';
+  $dbName = 'mlanden';
 
   // Initialize variables to null.
   $IDErr = $nameErr = $emailErr = $phoneErr ="";
@@ -417,13 +417,13 @@ Description:
   # SQL CODE HERE TO INSERT STUDENT INFORMATION IN THE TABLES
   # THE TABLE NAME IS STUDENTS 
   $conn = mysql_connect($dbhost, $dbuser, $dbpass);
+  mysql_select_db($dbName, $conn);
   if(! $conn ){
     die('Could not connect: ' . mysql_error());
   }
   // on duplicate to make sure no warnings or errprs are generated for 
   // duplicated key 
-  $sql = "INSERT INTO `XX`.`Students` (`student_id`, `name`, `email`, `phone`) VALUES ('$ID', '$name', '$email', '$phone') ON DUPLICATE KEY UPDATE name=name, email=email, phone = phone;";
-  mysql_select_db($dbName);
+  $sql = "INSERT INTO `Students` (`student_id`, `name`, `email`, `phone`) VALUES ('$ID', '$name', '$email', '$phone') ON DUPLICATE KEY UPDATE name=name, email=email, phone = phone;";
   $retval = mysql_query( $sql, $conn );
   if(! $retval){
     die('Could not insert data: ' . mysql_error());
@@ -435,8 +435,7 @@ Description:
     // insert each class
     foreach($classTaken as $data){
       //'P' means the class is taken in the table
-      $sql = "INSERT INTO `XX`.`course_taken` (`student_id`, `course_id`, `completed`) VALUES ('$ID', '$data', 'P') ON DUPLICATE KEY UPDATE student_id= student_id, course_id= course_id;";
-      mysql_select_db($dbName);
+      $sql = "INSERT INTO `course_taken` (`student_id`, `course_id`, `completed`) VALUES ('$ID', '$data', 'P') ON DUPLICATE KEY UPDATE student_id= student_id, course_id= course_id;";
       $retval = mysql_query( $sql, $conn );
       if(! $retval ){
         die('Could not insert data: ' . mysql_error());
