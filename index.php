@@ -44,22 +44,22 @@ Default character encoding in HTML5 is UTF-8
         <div class = "mainDiv">
             <h2>Registration Info:</h2>
             <p><span class="error">* required field.</span></p><br>
-        <form method="post" action="validation.php">
+        <form method="post" action="validation.php" id="infoForm">
             Student ID:<br> 
-            <input type="text" name="ID">
-            <span class="error">* <?php echo $IDErr;?></span>
+            <input type="text" name="ID" id="studentId" maxlength="7" minlength="7">
+            <span class="error" id="idErr">* </span>
             <br>
             Name:<br> 
-            <input type="text" name="name">
-            <span class="error">* <?php echo $nameErr;?></span>
+            <input type="text" name="name" id="name" minlength="1">
+            <span class="error" id="namErr">* </span>
             <br>
             E-mail:<br> 
-            <input type="text" name="email">
-            <span class="error">* <?php echo $emailErr;?></span>
+            <input type="text" name="email" id = "email" minlength="1">
+            <span class="error" id="emailErr">* </span>
             <br>
             Phone Number:<br>
-            <input type="text" name="phone">
-            <span class="error">* <?php echo $phoneErr;?></span>
+            <input type="text" name="phone" id="phone" placeholder="###-###-####" maxlength="14" minlength="12">
+            <span class="error" id="phoneErr">* </span>
             <br><br>
 
             <!-- a list of checkboxes for user to select classes they've taken --> 
@@ -163,5 +163,39 @@ Default character encoding in HTML5 is UTF-8
     <div id="footer">
     &#x000A9 2016 University of Maryland, Baltimore County | 1000 Hilltop Circle, Baltimore, MD 21250 | 410-455-1000
     </div>
+
+    <script type="text/javascript">
+    	var form = document.getElementById("infoForm");
+    	form.onsubmit = function(){
+    		var accept = true;
+    		var studentId = document.getElementById("studentId").value;
+    		var name = document.getElementById("name").value;
+    		var email = document.getElementById("email").value;
+    		var phone = document.getElementById("phone").value;
+
+    		//reset errors
+    		document.getElementById("idErr").innerHTML = "*";
+    		document.getElementById("namErr").innerHTML = "*";
+    		document.getElementById("emailErr").innerHTML = "*";
+    		document.getElementById("phoneErr").innerHTML = "*";
+    		if(studentId.search(/[a-zA-z]{2}\d{4}/) !== 0){
+    			document.getElementById("idErr").innerHTML = "The id should be 2 letters and 5 numbers";
+    			accept = false;
+    		}
+    		if(name.replace(/[A-Za-z ]+/ ,"") !== "" ){
+    			document.getElementById("namErr").innerHTML = "Name's should only have letters and spaces";
+    			accept = false;
+    		}
+    		if(email.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm, "") !== ""){
+    			document.getElementById("emailErr").innerHTML = "Invalid email";
+    			accept = false;
+    		}
+    		if(phone.search(/\d{3}\-\d{3}\-\d{4}/) != 0){
+    			document.getElementById("phoneErr").innerHTML = "Format should be like (410)-776-7777";
+    			accept = false;
+    		}
+    		return accept;
+    	};
+    </script>
 </body>
 </html>

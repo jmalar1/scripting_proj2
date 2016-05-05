@@ -42,51 +42,11 @@ Description:
   $classTaken = array();
   $suggestClass = array();
 
-  /* Collect user input and validate the data
-   * Validates by checking for if the input is empty or matches invalid format.
-   */
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["ID"])) {
-      $IDErr = "Student ID is required";
-    } else {
-      $ID = test_input($_POST["ID"]);
-      if (!preg_match("/^[a-zA-Z]{2}\d{5}$$/",$ID)) {
-        $IDErr = "Invalid ID format, correct format example: ab12345";
-      }
-    }
-    
-    if (empty($_POST["name"])) {
-      $nameErr = "Name is required";
-    } else {
-      $name = test_input($_POST["name"]);
-      // check name only contains letters and whitespace
-      if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-        $nameErr = "Only letters and white space allowed";
-      }
-    }
-
-    if (empty($_POST["email"])) {
-      $emailErr = "Email is required";
-    } else {
-      $email = test_input($_POST["email"]);
-      // check if e-mail address syntax is valid or not
-      if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email)) {
-        $emailErr = "Invalid email format";
-      }
-    }
-
-    if (empty($_POST["phone"])) {
-      $phoneErr = "Phone number is required";
-    } else {
-      $phone = test_input($_POST["phone"]);
-      if (!preg_match("/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/",$phone)) {
-        $phoneErr = "Invalid phone number format";
-      }
-    }
-    
-    // This collects the checkboxes from the first page and stores it in the array
-    $classTaken = $_POST['classTaken'];
-  }
+  $ID = test_input($_POST["ID"]);
+  $name = test_input($_POST["name"]);
+  $email = test_input($_POST["email"]);
+  $phone = test_input($_POST["phone"]);
+  $classTaken = $_POST['classTaken'];
 
   /* This function cleans off input by trimming, stripping off slashes, and removing the HTML special characters
    * to prevent insertion of unwanted code.
@@ -119,25 +79,9 @@ Description:
 <div class = "mainDiv">
 
 <?php
-  //output the user info, show error if it is invalid
-  $Color = "red";
-  echo "<h2>Your Information:</h2>";
-  echo "Student ID: ". $ID;
-  echo '<p style="Color:'.$Color.'">'.$IDErr.'</p>';
-  echo "<br>\n";
-  echo "Name: ". $name;
-  echo '<p style="Color:'.$Color.'">'.$nameErr.'</p>';
-  echo "<br>\n";
-  echo "Email: ". $email;
-  echo '<p style="Color:'.$Color.'">'.$emailErr.'</p>';
-  echo "<br>\n";
-  echo "Phone Number: ". $phone;
-  echo '<p style="Color:'.$Color.'">'.$phoneErr.'</p>';
-
   /* Generate a suggested class list based on the classes taken
    * if there are no generated errors
    */
-  if($IDErr == "" and $nameErr == "" and $emailErr == "" and $phoneErr == "") {
     echo "<h3>Classes Taken:</h3>";
     $num = count($classTaken);
     if($num > 0) {
@@ -151,13 +95,13 @@ Description:
         array_push($suggestClass, "MATH151");
       }else{
         if(!in_array("MATH152", $classTaken)){
-	  array_push($suggestClass, "MATH152");
+      	  array_push($suggestClass, "MATH152");
         }else{
-	  if(!in_array("MATH221", $classTaken)){
-	    array_push($suggestClass, "MATH221");
+      	  if(!in_array("MATH221", $classTaken)){
+      	    array_push($suggestClass, "MATH221");
           }
           if(!in_array("STAT355", $classTaken)){
-	    array_push($suggestClass, "STAT355");
+            array_push($suggestClass, "STAT355");
           }
         }
       }
@@ -165,34 +109,34 @@ Description:
       //science courses
       if(!in_array("BIOL100", $classTaken) and !in_array("BIOL141", $classTaken) and !in_array("CHEM101", $classTaken) and !in_array("PHYS121", $classTaken)){
         array_push($suggestClass, "BIOL100");
-       array_push($suggestClass, "BIOL141");
-       array_push($suggestClass, "CHEM101");
+        array_push($suggestClass, "BIOL141");
+        array_push($suggestClass, "CHEM101");
         array_push($suggestClass, "PHYS121");
       }else{
         if(in_array("BIOL100", $classTaken) and !in_array("BIOL301", $classTaken)){
-	  if(!in_array("BIOL142", $classTaken))
-	    if(!in_array("CHEM102", $classTaken))
-	      if(!in_array("PHYS122", $classTaken))
-		array_push($suggestClass, "BIOL301");
-	}
-	if(in_array("BIOL141", $classTaken) and !in_array("BIOL142", $classTaken)){
-	  if(!in_array("BIOL301", $classTaken))
-	    if(!in_array("CHEM102", $classTaken))
-	      if(!in_array("PHYS122", $classTaken))
-		array_push($suggestClass, "BIOL142");
-	}
-	if(in_array("CHEM101", $classTaken) and !in_array("CHEM102", $classTaken)){
-	  if(!in_array("BIOL301", $classTaken))
-	    if(!in_array("BIOL142", $classTaken))
-	      if(!in_array("PHYS122", $classTaken))
-		array_push($suggestClass, "CHEM102");
-	}
-	if(in_array("PHYS121", $classTaken) and !in_array("PHYS122", $classTaken)){
-	  if(!in_array("BIOL301", $classTaken))
-	    if(!in_array("BIOL142", $classTaken))
-	      if(!in_array("CHEM101", $classTaken))
-		array_push($suggestClass, "PHYS122");
-	}
+      	  if(!in_array("BIOL142", $classTaken))
+      	    if(!in_array("CHEM102", $classTaken))
+      	      if(!in_array("PHYS122", $classTaken))
+		            array_push($suggestClass, "BIOL301");
+      	}
+      	if(in_array("BIOL141", $classTaken) and !in_array("BIOL142", $classTaken)){
+      	  if(!in_array("BIOL301", $classTaken))
+      	    if(!in_array("CHEM102", $classTaken))
+      	      if(!in_array("PHYS122", $classTaken))
+      	       	array_push($suggestClass, "BIOL142");
+      	}
+      	if(in_array("CHEM101", $classTaken) and !in_array("CHEM102", $classTaken)){
+      	  if(!in_array("BIOL301", $classTaken))
+      	    if(!in_array("BIOL142", $classTaken))
+      	      if(!in_array("PHYS122", $classTaken))
+      	       	array_push($suggestClass, "CHEM102");
+      	}
+      	if(in_array("PHYS121", $classTaken) and !in_array("PHYS122", $classTaken)){
+      	  if(!in_array("BIOL301", $classTaken))
+      	    if(!in_array("BIOL142", $classTaken))
+      	      if(!in_array("CHEM101", $classTaken))
+      		      array_push($suggestClass, "PHYS122");
+      	}
       }
 
       //computer science courses
@@ -203,7 +147,7 @@ Description:
           array_push($suggestClass, "CMSC202");
         }else{
           if(!in_array("CMSC304", $classTaken)){
-           array_push($suggestClass, "CMSC304");
+            array_push($suggestClass, "CMSC304");
           }
           if(!in_array("CMSC486", $classTaken)){
             array_push($suggestClass, "CMSC486");
@@ -215,205 +159,195 @@ Description:
             array_push($suggestClass, "CMSC203");
           }else{
             if(!in_array("CMSC451", $classTaken)){
-	      array_push($suggestClass, "CMSC451");
-	    }
-	    if(!in_array("CMSC452", $classTaken)){
-	      array_push($suggestClass, "CMSC452");
-	    }
-	    if(!in_array("CMSC457", $classTaken)){
-	      array_push($suggestClass, "CMSC457");
-	    }
-	    if(!in_array("CMSC232", $classTaken)){
-	      array_push($suggestClass, "CMSC232");
-	    }
-	    if(!in_array("CMSC291", $classTaken)){
-	      array_push($suggestClass, "CMSC291");
-	    }
-	    if(!in_array("CMSC299", $classTaken)){
-	      array_push($suggestClass, "CMSC299");
-	    }
-	    if(!in_array("CMSC313", $classTaken)){
-	      array_push($suggestClass, "CMSC313");
-	    }else{
-	      array_push($suggestClass, "CMSC411");
-	    }
-	    if(!in_array("CMSC331", $classTaken)){
-	      array_push($suggestClass, "CMSC331");
-	    }else{
-	      if(!in_array("CMSC432", $classTaken)){
-	        array_push($suggestClass, "CMSC432");
-	      }
-	      if(!in_array("CMSC433", $classTaken)){
-	        array_push($suggestClass, "CMSC433");
-	      }
-	      if(!in_array("CMSC473", $classTaken)){
-	        array_push($suggestClass, "CMSC473");
-	      }
-	    }
+      	      array_push($suggestClass, "CMSC451");
+      	    }
+      	    if(!in_array("CMSC452", $classTaken)){
+      	      array_push($suggestClass, "CMSC452");
+      	    }
+      	    if(!in_array("CMSC457", $classTaken)){
+      	      array_push($suggestClass, "CMSC457");
+      	    }
+      	    if(!in_array("CMSC232", $classTaken)){
+      	      array_push($suggestClass, "CMSC232");
+      	    }
+      	    if(!in_array("CMSC291", $classTaken)){
+      	      array_push($suggestClass, "CMSC291");
+      	    }
+      	    if(!in_array("CMSC299", $classTaken)){
+      	      array_push($suggestClass, "CMSC299");
+      	    }
+      	    if(!in_array("CMSC313", $classTaken)){
+      	      array_push($suggestClass, "CMSC313");
+      	    }else{
+      	      array_push($suggestClass, "CMSC411");
+      	    }
+      	    if(!in_array("CMSC331", $classTaken)){
+      	      array_push($suggestClass, "CMSC331");
+      	    }else{
+      	      if(!in_array("CMSC432", $classTaken)){
+      	        array_push($suggestClass, "CMSC432");
+      	      }
+      	      if(!in_array("CMSC433", $classTaken)){
+      	        array_push($suggestClass, "CMSC433");
+      	      }
+      	      if(!in_array("CMSC473", $classTaken)){
+      	        array_push($suggestClass, "CMSC473");
+      	      }
+      	    }
 
-	    if(!in_array("CMSC341", $classTaken)){
-	      array_push($suggestClass, "CMSC341");
-	    }else{
-	      if(!in_array("CMSC427", $classTaken)){
-	        array_push($suggestClass, "CMSC427");
-	      }
-	      if(!in_array("CMSC436", $classTaken)){
-	        array_push($suggestClass, "CMSC436");
-	      }
-	      if(!in_array("CMSC437", $classTaken)){
-	        array_push($suggestClass, "CMSC437");
-	      }
-	      if(!in_array("CMSC443", $classTaken)){
-	        array_push($suggestClass, "CMSC443");
-	      }
-	      if(!in_array("CMSC453", $classTaken)){
-	        array_push($suggestClass, "CMSC453");
-	      }
-	      if(!in_array("CMSC455", $classTaken)){
-	        array_push($suggestClass, "CMSC455");
-	      }
-	      if(!in_array("CMSC456", $classTaken)){
-	        array_push($suggestClass, "CMSC456");
-	      }
-	      if(!in_array("CMSC461", $classTaken)){
-	        array_push($suggestClass, "CMSC461");
-	      }
-	      if(!in_array("CMSC352", $classTaken)){
-	        array_push($suggestClass, "CMSC352");
-	      }
-	      if(!in_array("CMSC391", $classTaken)){
-	        array_push($suggestClass, "CMSC391");
-	      }
-	      if(!in_array("CMSC404", $classTaken)){
-	        array_push($suggestClass, "CMSC404");
-	      }
-	      if(!in_array("CMSC444", $classTaken)){
-	        array_push($suggestClass, "CMSC444");
-	      }
-	      if(!in_array("CMSC446", $classTaken)){
-	        array_push($suggestClass, "CMSC446");
-	      }
-	      if(!in_array("CMSC495", $classTaken)){
-	        array_push($suggestClass, "CMSC495");
-	      }
-	      if(!in_array("CMSC498", $classTaken)){
-	        array_push($suggestClass, "CMSC498");
-	      }
-	      if(!in_array("CMSC499", $classTaken)){
-	        array_push($suggestClass, "CMSC499");
-	      }
-	      if(in_array("CMSC341", $classTaken) and in_array("STAT355", $classTaken)){
-	        array_push($suggestClass, "CMSC441");
-	      }
-	      if(!in_array("CMSC471", $classTaken)){
-	        array_push($suggestClass, "CMSC471");
-	      }else{
-	        if(!in_array("CMSC477", $classTaken)){
-	          array_push($suggestClass, "CMSC477");
-	        }
-	        if(!in_array("CMSC478", $classTaken)){
-	          array_push($suggestClass, "CMSC478");
-	        }
-	        if(!in_array("CMSC479", $classTaken)){
-	          array_push($suggestClass, "CMSC479");
-	        }
-	      }
-	      if(!in_array("CMSC475", $classTaken)){
-							array_push($suggestClass, "CMSC475");
-	      }
-	      if(!in_array("CMSC476", $classTaken)){
-							array_push($suggestClass, "CMSC476");
-	      }
-	      if(!in_array("CMSC481", $classTaken)){
-							array_push($suggestClass, "CMSC481");
-	      }
-	      if(in_array("CMSC461", $classTaken) and in_array("CMSC481", $classTaken)){
-	        if(!in_array("CMSC465", $classTaken) or !in_array("CMSC466", $classTaken)){
-	          if(!in_array("CMSC465", $classTaken) and !in_array("CMSC466", $classTaken)){
-	            array_push($suggestClass, "CMSC465");
-	            array_push($suggestClass, "CMSC466");
-	          }
-								
-	        }
-	      }
-	      $filtered = 0;
-	      foreach ($classTaken as $element) {
-	        if (preg_match("@^CMSC4@",$element)){ 
-	          $filtered = 1;
-	        }
-	      }
-	      if($filtered == 1){
-	        if(!in_array("CMSC447", $classTaken)){
-	          array_push($suggestClass, "CMSC447");
-	        }else{
-	          if(!in_array("CMSC448", $classTaken)){
-	            array_push($suggestClass, "CMSC448");
-	          }
-	        }
-	      }
-			
-	    }
-	    if(in_array("CMSC313", $classTaken) and in_array("CMSC341", $classTaken)){
-	      if(!in_array("CMSC421", $classTaken)){
-	        array_push($suggestClass, "CMSC421");
-	      }else{
-	        if(!in_array("CMSC426", $classTaken)){
-	          array_push($suggestClass, "CMSC426");
-	        }
-	        if(!in_array("CMSC483", $classTaken)){
-	          array_push($suggestClass, "CMSC483");
-	        }
-	      }
-	      if(in_array("CMSC421", $classTaken) and in_array("CMSC481", $classTaken)){
-	        if(!in_array("CMSC487", $classTaken)){
-	          array_push($suggestClass, "CMSC487");
-	        }
-	      }
-	      if(!in_array("CMSC435", $classTaken)){
-	        array_push($suggestClass, "CMSC435");
-	      }else{
-	        if(in_array("CMSC435", $classTaken) and in_array("CMSC471", $classTaken)){
-	          if(!in_array("CMSC493", $classTaken)){
-	            array_push($suggestClass, "CMSC493");
-	          }
-	        }
-	      }
-						
-	    }
-	    if(in_array("CMSC331", $classTaken) and in_array("CMSC341", $classTaken)){
-	      if(!in_array("CMSC431", $classTaken)){
-	        array_push($suggestClass, "CMSC431");
-	      }
-	    }
-
-	  }
-	}
-       }
-      } else {
-        array_push($suggestClass, "CMSC201");
-        array_push($suggestClass, "MATH151");
-        array_push($suggestClass, "BIOL100");
-        array_push($suggestClass, "BIOL141");
-        array_push($suggestClass, "CHEM101");
-        array_push($suggestClass, "PHYS121");
-        echo "You haven't taken any class<br>\n";
+      	    if(!in_array("CMSC341", $classTaken)){
+      	      array_push($suggestClass, "CMSC341");
+      	    }else{
+      	      if(!in_array("CMSC427", $classTaken)){
+      	        array_push($suggestClass, "CMSC427");
+      	      }
+      	      if(!in_array("CMSC436", $classTaken)){
+      	        array_push($suggestClass, "CMSC436");
+      	      }
+      	      if(!in_array("CMSC437", $classTaken)){
+      	        array_push($suggestClass, "CMSC437");
+      	      }
+      	      if(!in_array("CMSC443", $classTaken)){
+      	        array_push($suggestClass, "CMSC443");
+      	      }
+      	      if(!in_array("CMSC453", $classTaken)){
+      	        array_push($suggestClass, "CMSC453");
+      	      }
+      	      if(!in_array("CMSC455", $classTaken)){
+      	        array_push($suggestClass, "CMSC455");
+      	      }
+      	      if(!in_array("CMSC456", $classTaken)){
+      	        array_push($suggestClass, "CMSC456");
+      	      }
+      	      if(!in_array("CMSC461", $classTaken)){
+      	        array_push($suggestClass, "CMSC461");
+      	      }
+      	      if(!in_array("CMSC352", $classTaken)){
+      	        array_push($suggestClass, "CMSC352");
+      	      }
+      	      if(!in_array("CMSC391", $classTaken)){
+      	        array_push($suggestClass, "CMSC391");
+      	      }
+      	      if(!in_array("CMSC404", $classTaken)){
+      	        array_push($suggestClass, "CMSC404");
+      	      }
+      	      if(!in_array("CMSC444", $classTaken)){
+      	        array_push($suggestClass, "CMSC444");
+      	      }
+      	      if(!in_array("CMSC446", $classTaken)){
+      	        array_push($suggestClass, "CMSC446");
+      	      }
+      	      if(!in_array("CMSC495", $classTaken)){
+      	        array_push($suggestClass, "CMSC495");
+      	      }
+      	      if(!in_array("CMSC498", $classTaken)){
+      	        array_push($suggestClass, "CMSC498");
+      	      }
+      	      if(!in_array("CMSC499", $classTaken)){
+      	        array_push($suggestClass, "CMSC499");
+      	      }
+      	      if(in_array("CMSC341", $classTaken) and in_array("STAT355", $classTaken)){
+      	        array_push($suggestClass, "CMSC441");
+      	      }
+      	      if(!in_array("CMSC471", $classTaken)){
+      	        array_push($suggestClass, "CMSC471");
+      	      }else{
+      	        if(!in_array("CMSC477", $classTaken)){
+      	          array_push($suggestClass, "CMSC477");
+      	        }
+      	        if(!in_array("CMSC478", $classTaken)){
+      	          array_push($suggestClass, "CMSC478");
+      	        }
+      	        if(!in_array("CMSC479", $classTaken)){
+      	          array_push($suggestClass, "CMSC479");
+      	        }
+      	      }
+      	      if(!in_array("CMSC475", $classTaken)){
+      							array_push($suggestClass, "CMSC475");
+      	      }
+      	      if(!in_array("CMSC476", $classTaken)){
+      							array_push($suggestClass, "CMSC476");
+      	      }
+      	      if(!in_array("CMSC481", $classTaken)){
+      							array_push($suggestClass, "CMSC481");
+      	      }
+      	      if(in_array("CMSC461", $classTaken) and in_array("CMSC481", $classTaken)){
+      	        if(!in_array("CMSC465", $classTaken) or !in_array("CMSC466", $classTaken)){
+      	          if(!in_array("CMSC465", $classTaken) and !in_array("CMSC466", $classTaken)){
+      	            array_push($suggestClass, "CMSC465");
+      	            array_push($suggestClass, "CMSC466");
+      	          }
+      	        }
+      	      }
+      	      $filtered = 0;
+      	      foreach ($classTaken as $element) {
+      	        if (preg_match("@^CMSC4@",$element)){ 
+      	          $filtered = 1;
+      	        }
+      	      }
+      	      if($filtered == 1){
+      	        if(!in_array("CMSC447", $classTaken)){
+      	          array_push($suggestClass, "CMSC447");
+      	        }else{
+      	          if(!in_array("CMSC448", $classTaken)){
+      	            array_push($suggestClass, "CMSC448");
+      	          }
+      	        }
+      	      }
+        	    if(in_array("CMSC313", $classTaken) and in_array("CMSC341", $classTaken)){
+        	      if(!in_array("CMSC421", $classTaken)){
+        	        array_push($suggestClass, "CMSC421");
+        	      }else{
+        	        if(!in_array("CMSC426", $classTaken)){
+        	          array_push($suggestClass, "CMSC426");
+        	        }
+        	        if(!in_array("CMSC483", $classTaken)){
+        	          array_push($suggestClass, "CMSC483");
+        	        }
+        	      }
+        	      if(in_array("CMSC421", $classTaken) and in_array("CMSC481", $classTaken)){
+        	        if(!in_array("CMSC487", $classTaken)){
+        	          array_push($suggestClass, "CMSC487");
+        	        }
+        	      }
+        	      if(!in_array("CMSC435", $classTaken)){
+        	        array_push($suggestClass, "CMSC435");
+        	      }else{
+        	        if(in_array("CMSC435", $classTaken) and in_array("CMSC471", $classTaken)){
+        	          if(!in_array("CMSC493", $classTaken)){
+        	            array_push($suggestClass, "CMSC493");
+        	          }
+        	        }
+                }
+              }
+        	    if(in_array("CMSC331", $classTaken) and in_array("CMSC341", $classTaken)){
+        	      if(!in_array("CMSC431", $classTaken)){
+        	        array_push($suggestClass, "CMSC431");
+        	      }
+              }
+            }
+          }
+        }
       }
-
-
-      echo "<h3>Suggested Classes:</h3>";
-      sort($suggestClass);
-      for($i=0; $i < count($suggestClass); $i++){
-        echo($suggestClass[$i] . " ");
-      }
-      echo "<br><br>";
-	
-  }
-	
-
+    }else{
+      array_push($suggestClass, "CMSC201");
+      array_push($suggestClass, "MATH151");
+      array_push($suggestClass, "BIOL100");
+      array_push($suggestClass, "BIOL141");
+      array_push($suggestClass, "CHEM101");
+      array_push($suggestClass, "PHYS121");
+      echo "You haven't taken any class<br>\n";
+    }
+    echo "<h3>Suggested Classes:</h3>";
+    sort($suggestClass);
+    for($i=0; $i < count($suggestClass); $i++){
+      echo($suggestClass[$i] . " ");
+    }
+    echo "<br><br>";
 ?>
 
 <!-- if all input are valid, then push student info and classes taken info into database -->
-<?php if($IDErr == "" and $nameErr == "" and $emailErr == "" and $phoneErr == "") {
+<?php 
   # SQL CODE HERE TO INSERT STUDENT INFORMATION IN THE TABLES
   # THE TABLE NAME IS STUDENTS 
   $conn = mysql_connect($dbhost, $dbuser, $dbpass);
@@ -441,7 +375,7 @@ Description:
         die('Could not insert data: ' . mysql_error());
       }
     }
-  }
+  
   // close connection
   mysql_close($conn);
 ?>
