@@ -38,9 +38,9 @@ Description:
 
   # SQL INFO from Neh's database
   $dbhost = 'studentdb-maria.gl.umbc.edu';
-  $dbuser = 'mlanden';
-  $dbpass = 'cmsc433';
-  $dbName = 'mlanden';
+  $dbuser = 'jmalar1';
+  $dbpass = 'jmalar1';
+  $dbName = 'jmalar1';
    
    // Collect the user input and validate it
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -199,7 +199,7 @@ function test_input($data) {
     # if to avoid warning on empty array 
     if(count($class)){
       foreach($class as $data){
-        $sql = "INSERT INTO `course_taken` (`student_id`, `course_id`, `completed`) VALUES ('$ID', '$data', 'R') ON DUPLICATE KEY UPDATE student_id= student_id, course_id= course_id;";
+        $sql = "INSERT INTO `course_taken` (`student_id`, `course_id`, `completed`) VALUES ('$ID', '$data', 'R') ON DUPLICATE KEY UPDATE student_id=student_id;";
         mysql_select_db($dbName);
         $retval = mysql_query( $sql, $conn );
         if(! $retval ){

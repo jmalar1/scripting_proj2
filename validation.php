@@ -31,10 +31,10 @@ Description:
 <?php
   # SQL DATABASE INFO HERE!!!!!!!!!!!!!!!!!!!
   $dbhost = 'studentdb-maria.gl.umbc.edu';
-  $dbuser = 'mlanden';
-  $dbpass = 'cmsc433';
+  $dbuser = 'jmalar1';
+  $dbpass = 'jmalar1';
   // usually same as the username if using gl database 
-  $dbName = 'mlanden';
+  $dbName = 'jmalar1';
 
   // Initialize variables to null.
   $IDErr = $nameErr = $emailErr = $phoneErr ="";
@@ -357,7 +357,7 @@ Description:
   }
   // on duplicate to make sure no warnings or errprs are generated for 
   // duplicated key 
-  $sql = "INSERT INTO `Students` (`student_id`, `name`, `email`, `phone`) VALUES ('$ID', '$name', '$email', '$phone') ON DUPLICATE KEY UPDATE name=name, email=email, phone = phone;";
+  $sql = "INSERT INTO `Students` (`student_id`, `student_name`, `student_email`, `student_phone`) VALUES ('$ID', '$name', '$email', '$phone') ON DUPLICATE KEY UPDATE student_name=student_name, student_email=student_email, student_phone=student_phone;";
   $retval = mysql_query( $sql, $conn );
   if(! $retval){
     die('Could not insert data: ' . mysql_error());
@@ -369,7 +369,7 @@ Description:
     // insert each class
     foreach($classTaken as $data){
       //'P' means the class is taken in the table
-      $sql = "INSERT INTO `course_taken` (`student_id`, `course_id`, `completed`) VALUES ('$ID', '$data', 'P') ON DUPLICATE KEY UPDATE student_id= student_id, course_id= course_id;";
+      $sql = "INSERT INTO `course_taken` (`student_id`, `course_id`, `completed`) VALUES ('$ID', '$data', 'P') ON DUPLICATE KEY UPDATE student_id=student_id, course_id=course_id;";
       $retval = mysql_query( $sql, $conn );
       if(! $retval ){
         die('Could not insert data: ' . mysql_error());

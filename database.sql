@@ -27,17 +27,17 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `Courses` (
-  `course_ID` varchar(10) NOT NULL,
+  `course_id` varchar(10) NOT NULL,
   `course_name` text,
   `course_credits` text,
-  PRIMARY KEY (`course_ID`)
+  PRIMARY KEY (`course_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Courses`
 --
 
-INSERT INTO `Courses` (`course_ID`, `course_name`, `course_credits`) VALUES
+INSERT INTO `Courses` (`course_id`, `course_name`, `course_credits`) VALUES
 ('BIOL141', 'Foundations of Biology: Cells, Energy and Organisms', '4'),
 ('BIOL142', 'Foundations of Biology: Ecology and Evolution', '4'),
 ('CHEM101', 'Principles of Chemistry I', '4'),
@@ -110,10 +110,10 @@ INSERT INTO `Courses` (`course_ID`, `course_name`, `course_credits`) VALUES
 
 CREATE TABLE IF NOT EXISTS `course_taken` (
   `student_id` varchar(10) NOT NULL,
-  `couurse_id` varchar(10) NOT NULL,
-  `complete` varchar(5) NOT NULL,
-  PRIMARY KEY (`student_id`,`couurse_id`),
-  KEY `couurse_id` (`couurse_id`)
+  `course_id` varchar(10) NOT NULL,
+  `completed` varchar(5) NOT NULL,
+  PRIMARY KEY (`student_id`,`course_id`),
+  KEY `course_id` (`course_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -123,11 +123,11 @@ CREATE TABLE IF NOT EXISTS `course_taken` (
 --
 
 CREATE TABLE IF NOT EXISTS `Students` (
-  `student_ID` varchar(10) NOT NULL,
+  `student_id` varchar(10) NOT NULL,
   `student_name` text NOT NULL,
   `student_email` text NOT NULL,
   `student_phone` text NOT NULL,
-  PRIMARY KEY (`student_ID`)
+  PRIMARY KEY (`student_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -138,8 +138,8 @@ CREATE TABLE IF NOT EXISTS `Students` (
 -- Constraints for table `course_taken`
 --
 ALTER TABLE `course_taken`
-  ADD CONSTRAINT `course_taken_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_ID`),
-  ADD CONSTRAINT `course_taken_ibfk_2` FOREIGN KEY (`couurse_id`) REFERENCES `Courses` (`course_ID`);
+  ADD CONSTRAINT `course_taken_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`),
+  ADD CONSTRAINT `course_taken_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `Courses` (`course_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
