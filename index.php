@@ -47,15 +47,15 @@ Default character encoding in HTML5 is UTF-8
             <p><span class="error">* required field.</span></p><br>
         <form method="post" action="validation.php" id="infoForm">
             Student ID:<br> 
-            <input type="text" name="ID" id="studentId" maxlength="7" minlength="7">
+            <input type="text" name="ID" id="studentId" placeholder="AB123345" maxlength="7" minlength="7">
             <span class="error" id="idErr">* </span>
             <br>
             Name:<br> 
-            <input type="text" name="name" id="name" minlength="1">
+            <input type="text" name="name" id="name" placeholder="John Smith" minlength="1">
             <span class="error" id="namErr">* </span>
             <br>
             E-mail:<br> 
-            <input type="text" name="email" id = "email" minlength="1">
+            <input type="text" name="email" id = "email" placeholder="student1@umbc.edu" minlength="1">
             <span class="error" id="emailErr">* </span>
             <br>
             Phone Number:<br>
@@ -64,7 +64,7 @@ Default character encoding in HTML5 is UTF-8
             <br><br>
 
             <!-- a list of checkboxes for user to select classes they've taken --> 
-            <h3>Classes Taken (check any class you have taken)</h2><hr><br>
+            <h3>Classes Taken (check any class you have already completed)</h2><hr><br>
              
             <!-- List of the mandatory computer science course you need to take -->
              <b>Required Computer Science Courses:</b><br>
@@ -93,11 +93,11 @@ Default character encoding in HTML5 is UTF-8
             <!-- These are the science courses that a student could have taken (they need 12 credits of a science) which includes a lab -->
             <br><b>Required Science Courses: <br>(Computer science majors must take 12 credits in science courses. <br>Two courses must be from one of the following sequences)</b><br><br>
             <label><input type="checkbox" name="classTaken[]" value="BIOL100"> BIOL100 - Concepts of Biology (4.00)</label><br>
-            <label><input type="checkbox" name="classTaken[]" value="BIOL301"> BIOL301 - Ecology and Evolution (3.00)</label><br><br>
+            <label><input type="checkbox" name="classTaken[]" value="BIOL301"> BIOL301 - Ecology and Evolution (3.00)</label><br>or<br>
             <label><input type="checkbox" name="classTaken[]" value="BIOL141"> BIOL141 - Foundations of Biology: Cells, Energy and Organisms (4.00)</label><br>
-            <label><input type="checkbox" name="classTaken[]" value="BIOL142"> BIOL142 - Foundations of Biology: Ecology and Evolution (4.00)</label><br><br>
+            <label><input type="checkbox" name="classTaken[]" value="BIOL142"> BIOL142 - Foundations of Biology: Ecology and Evolution (4.00)</label><br>or<br>
             <label><input type="checkbox" name="classTaken[]" value="CHEM101"> CHEM101 - Principles of Chemistry I (4.00)</label><br>
-            <label><input type="checkbox" name="classTaken[]" value="CHEM102"> CHEM102 - Principles of Chemistry II (4.00)</label><br><br>
+            <label><input type="checkbox" name="classTaken[]" value="CHEM102"> CHEM102 - Principles of Chemistry II (4.00)</label><br>or<br>
             <label><input type="checkbox" name="classTaken[]" value="PHYS121"> PHYS121 - Introductory Physics I (4.00)</label><br>
             <label><input type="checkbox" name="classTaken[]" value="PHYS122"> PHYS122 - Introductory Physics II (4.00)</label><br>    
             
@@ -152,7 +152,7 @@ Default character encoding in HTML5 is UTF-8
             <label><input type="checkbox" name="classTaken[]" value="CMSC491"> CMSC491 (3.00) Special Topics in Computer Science</label><br>
             <label><input type="checkbox" name="classTaken[]" value="CMSC493"> CMSC493 (3.00) Capstone Games Group Project</label><br>
             <label><input type="checkbox" name="classTaken[]" value="CMSC495"> CMSC495 (3.00) Honors Thesis</label><br>
-            <label><input type="checkbox" name="classTaken[]" value="CMSC498"> CMSC498 (3.00) Independent Study in Computer Science for CMSC Interns and Coop Students</label><br>
+            <label><input type="checkbox" name="classTaken[]" value="CMSC498"> CMSC498 (3.00) Independent Study in Computer Science for Interns & Coop Students</label><br>
             <label><input type="checkbox" name="classTaken[]" value="CMSC499"> CMSC499 (1.00 - 4.00) Independent Study in Computer Science</label><br>
            
             <!-- This is the submit button -->
@@ -192,7 +192,7 @@ Default character encoding in HTML5 is UTF-8
     			accept = false;
     		}
     		if(phone.search(/\d{3}\-\d{3}\-\d{4}/) != 0){
-    			document.getElementById("phoneErr").innerHTML = "Format should be like (410)-776-7777";
+    			document.getElementById("phoneErr").innerHTML = "Format should be 410-776-7777";
     			accept = false;
     		}
     		return accept;
