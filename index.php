@@ -28,7 +28,7 @@ Default character encoding in HTML5 is UTF-8
     <!-- The "topTitle" div -->
     <!-- Has one span in it to highlght the "UMBC" red in title -->
     <div class = "topTitle">
-        <h1> <span style = "color:red"> UMBC </span> Advising for Computer Science Majors </h1> 
+        <h1> <span style = "color:#FF3400"> UMBC </span> Advising for Computer Science Majors </h1> 
     </div>
 
     <!-- NAVIGATION BAR(LEFT-SIDE) with three things: Home, List of Classes, and About tab --> 
@@ -43,6 +43,7 @@ Default character encoding in HTML5 is UTF-8
     <!--The main div to put the form in, which will take in all the user input using textboxes and checkboxes--> 
         <div class = "mainDiv">
             <h2>Registration Info:</h2>
+            <hr>
             <p><span class="error">* required field.</span></p><br>
         <form method="post" action="validation.php" id="infoForm">
             Student ID:<br> 
@@ -63,7 +64,7 @@ Default character encoding in HTML5 is UTF-8
             <br><br>
 
             <!-- a list of checkboxes for user to select classes they've taken --> 
-            <b>Classes Taken:(check any class you have taken)</b><br><br>
+            <h3>Classes Taken (check any class you have taken)</h2><hr><br>
              
             <!-- List of the mandatory computer science course you need to take -->
              <b>Required Computer Science Courses:</b><br>
@@ -90,7 +91,7 @@ Default character encoding in HTML5 is UTF-8
             <label><input type="checkbox" name="classTaken[]" value="STAT355"> STAT355 (4.00) - Introduction to Probability and Statistics for Scientists and Engineers</label><br>
 
             <!-- These are the science courses that a student could have taken (they need 12 credits of a science) which includes a lab -->
-            <br><b>Required Science Courses: (Computer science majors must take 12 credits in science courses. Two courses must be from one of the following sequences)</b><br>
+            <br><b>Required Science Courses: <br>(Computer science majors must take 12 credits in science courses. <br>Two courses must be from one of the following sequences)</b><br><br>
             <label><input type="checkbox" name="classTaken[]" value="BIOL100"> BIOL100 - Concepts of Biology (4.00)</label><br>
             <label><input type="checkbox" name="classTaken[]" value="BIOL301"> BIOL301 - Ecology and Evolution (3.00)</label><br><br>
             <label><input type="checkbox" name="classTaken[]" value="BIOL141"> BIOL141 - Foundations of Biology: Cells, Energy and Organisms (4.00)</label><br>

@@ -19,7 +19,7 @@ p{
 .topTitle{
 	
     position: fixed; /* Keeps it at the top */
-    background-image: url(http://thumbs.dreamstime.com/x/gold-black-circles-10809992.jpg);
+    background-image: url(http://www.michaelmillerfabrics.com/media/catalog/product/cache/1/image/500x/9df78eab33525d08d6e5fb8d27136e95/j/e/jet_black_3.jpg);
     color: white;
     width: 100%; 
     //height: 1vw;
@@ -44,6 +44,7 @@ p{
  */
 html {
     height: 100%;
+    overflow-y: hidden;
 }
 
 /*
@@ -52,7 +53,7 @@ html {
 body {
     height:100%;
     margin: 0px;    
-    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=80910), auto;
+    font-family: Helvetica;
 }
 
 /*
@@ -63,47 +64,58 @@ h1 {
 }
 
 /*
+ * Push headings slightly left with nicer font
+ */
+h2, h3{
+    margin-left: -20%;
+    font-family: Garamond;
+}
+
+b{
+    margin-left: -10%;
+    font-family: Garamond;
+}
+/*
+ * Push line under heading slightly left
+ */
+hr{
+    margin-left: -20%;
+    width: 100%;
+}
+
+
+/*
  * This is the main content of the page that is set to display.
  */
 .mainDiv{
-    //clear: both;
-    //margin-left: vw;    
-    //width: %;
     height: 100%;
-    background-color: rgb(240,240,240);
-    //padding-right: 1%;
+    background-color: #FDFDFD;
 	padding-top: 6vw;
-    padding-left: 27vw;
+    padding-left: 25%;
 	padding-right: 27vw;
-	//margin: auto;
-	//padding-bottom: 27vw;
-	//padding-left: 10%;
-	//padding-right: 5%;
+
 	z-index: 4;
-	//white-space: nowrap;
-	//overflow: hidden;
 	overflow: auto;
 	margin-bottom: 0px;
 }
 
 /*
- * This is the navigation bar that is set to yellow
+ * This is the side navigation bar
  */
 ul {
 	float: left;
 	position: fixed;
     list-style-type: none;
-    //margin: 0;
     padding-top: 6vw;
 	padding-left: 2px;
 	padding-right: 2px;
 	font-size: 100%;
-    width: 25vw;
-    background-color: rgb(255,215,0);
+    width: 15%;
+    background-color: #E6E6E6;
     height: 100%;
     overflow: auto;
-    font-family:Helvetica;
-	max-width: 140px;
+    font-family:Garamond;
+	max-width: 300px;
 	z-index: 3;
 	margin: 0px;
 }
@@ -113,10 +125,8 @@ ul {
  */
 li a {
     display: block;
-    background: linear-gradient(green, lime);
     color: black;
     text-align: center;
-    //text-shadow: black;
     padding-top: 10%;
     padding-left: 5px;
     padding-right: 5px;
@@ -131,7 +141,7 @@ li a {
  * Highlights the navigation bar buttons when you are currently in the page specified by the button
  */
 li a.active {
-    background: linear-gradient(-60deg, yellow, rgb(102,204,0));
+    background: #2B8AB3;
     color: white;
 	
     
@@ -142,7 +152,7 @@ li a.active {
  * Highlights the button you are about to click
  */
 li a:hover:not(.active) {
-    background: linear-gradient(-30deg, rgb(0, 204, 230), lime);
+    background: #2B8AB3;
     color: white;
     transition: width 1s;
     border-radius: 5px 5px 30px 5px;
@@ -152,19 +162,14 @@ li a:hover:not(.active) {
  * This is for the footer of the website that is set to expand the width of the page and set to bottom
  */
 #footer {
-    background-color:#003319;
-    clear: both;
-    position: absolute;
+    background-color:black;
+    
     color:white;
     text-align:center;
-    //padding:5px;
-    padding-top: 0.5vw;
-    padding-bottom: 0.5vw;
     float: below;
-    position: below;
     width: 100%;
     z-index: 999;
-    overflow: auto;
+    overflow: hidden;
     margin: 0px;
 }
 
@@ -173,7 +178,7 @@ li a:hover:not(.active) {
  */
 input[type=text] {
     width: 40%;
-    padding: 8px 15px;
+    padding: 4px 8px;
     margin: 4px 0;
     box-sizing: border-box;
     border: 1px solid #555;
@@ -185,7 +190,7 @@ input[type=text] {
  * Highlights the textbox with yellow when you are typing in it
  */
 input[type=text]:focus {
-    background-color: rgb(255,215,0);
+    background-color: #FFCB00;
     border: 3px solid #555;
 }
 
@@ -201,7 +206,7 @@ input[type=checkbox] {
  * Decorates the submit button
  */
 input[type=submit] {
-    background: linear-gradient(lime, green); 
+    background: #FF4E32; 
     border: none;
     color: white;
     padding: 16px 32px;
@@ -219,8 +224,8 @@ input[type=submit] {
  * Highlight submit button when you're above it
  */
 input[type=submit]:hover {
-    background: linear-gradient(#4CAF50, yellow);
-    color: white;
+    background: white;
+    color: #FF4E32;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
 
 }
@@ -229,9 +234,9 @@ input[type=submit]:hover {
  * Similar to submit button but for all buttons
  */
 input[type=button] {
-    background: linear-gradient(lime, green);
+    background: #FF4E32;
     border: none;
-    color: white;
+    color: black;
     padding: 16px 32px;
     text-align: center;
     text-decoration: none;
@@ -247,8 +252,8 @@ input[type=button] {
  * Highlight so you know you're above it
  */
 input[type=button]:hover {
-    background: linear-gradient(#4CAF50, yellow);
-    color: white;
+    background: white;
+    color: #FF4E32;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
 }
 
@@ -256,7 +261,7 @@ input[type=button]:hover {
  * Makes the link look like a button on the last page which is a return to homepage button
  */
 a.return:link, a.return:visited {
-    background: linear-gradient(lime, green);
+    background: #FFD632;
     border: none;
     color: white;
     padding: 16px 32px;
@@ -274,8 +279,8 @@ a.return:link, a.return:visited {
  * When the button is hovered, make it look nice
  */
 a.return:hover, a.return:active {
-    background: linear-gradient(#4CAF50, yellow);
-    color: white;
+    background: white;
+    color: #FFD632;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
 
 }
