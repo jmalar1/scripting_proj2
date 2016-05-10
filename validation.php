@@ -338,12 +338,12 @@ Description:
       array_push($suggestClass, "PHYS121");
       echo "You haven't taken any class<br>\n";
     }
-    echo "<h3>Suggested Classes:</h3>";
+    echo "<h3>Suggested Classes:</h3><span id=\"suggested\">";
     sort($suggestClass);
     for($i=0; $i < count($suggestClass); $i++){
       echo($suggestClass[$i] . " ");
     }
-    echo "<br><br>";
+    echo "</span><br><br>";
 ?>
 
 <!-- if all input are valid, then push student info and classes taken info into database -->
@@ -381,7 +381,7 @@ Description:
 ?>
 
   <!-- This collects the registration class data via text input --> 
-  <form method="post" action="register.php">
+  <form method="post" action="register.php" onsubmit="return checkClasses()">
     <h2>Please enter the classes you want to register:</h2>
     <input type='hidden' name="suggestClass" value="<?php echo htmlentities(serialize($suggestClass)); ?>" >
     Student ID:<br> 
@@ -398,19 +398,19 @@ Description:
     <br><br>
     <p>Enter the class ID only, example: CMSC201<p><br>
     Class one:<br> 
-    <input type="text" name="class1">
+    <input type="text" name="class1" class="newRegister"><span id="class1"></span>
     <br>
     Class two:<br> 
-    <input type="text" name="class2">
+    <input type="text" name="class2" class="newRegister"><span id="class2"></span>
     <br>
     Class three:<br> 
-    <input type="text" name="class3">
+    <input type="text" name="class3" class="newRegister"><span id="class3"></span>
     <br>
     Class four:<br> 
-    <input type="text" name="class4">
+    <input type="text" name="class4" class="newRegister"><span id="class4"></span>
     <br>
     Class five:<br> 
-    <input type="text" name="class5">
+    <input type="text" name="class5" class="newRegister"><span id="class5"></span>
     <br>
     <input class="submit" type="submit" name="submit" value="Submit"> 
 	 
@@ -431,5 +431,26 @@ else {
 <div id="footer">
   &#x000A9 2016 University of Maryland, Baltimore County | 1000 Hilltop Circle, Baltimore, MD 21250 | 410-455-1000
 </div>
+
+<script type="text/javascript">
+	function checkClasses(){
+		var suggested = document.getElementById("suggested").innerHTML;
+		var classes = document.getElementsByClassName("newRegister");
+		var accept = true;
+		for(var i = 0; i < 5; i++){
+			var text = classes[i].value;
+			var err = document.getElementById(classes[i].name);
+			if(text !== "" && !(suggested.includes(" " + text + " "))){
+				err.innerHTML = "You cannot registerfor this class";
+				accept = false;
+			}else{
+				err.innerHTML = "";
+			}
+		}
+		if(!accept){
+			return false;
+		}
+	}
+</script>
 </body>
 </html>
