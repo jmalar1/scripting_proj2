@@ -68,17 +68,41 @@ Default character encoding in HTML5 is UTF-8
              
             <!-- List of the mandatory computer science course you need to take -->
              <b>Required Computer Science Courses:</b><br>
-             <label><input type="checkbox" name="classTaken[]" value="CMSC201"> CMSC201 (4.00) Computer Science I for Majors</label> <br>
-             <label><input type="checkbox" name="classTaken[]" value="CMSC202"> CMSC202 (4.00) Computer Science II for Majors</label> <br>
-             <label><input type="checkbox" name="classTaken[]" value="CMSC203"> CMSC203 (3.00) Discrete Structures</label><br>
-             <label><input type="checkbox" name="classTaken[]" value="CMSC304"> CMSC304 (3.00) Social and Ethical Issues in Information Technology</label><br>
-             <label><input type="checkbox" name="classTaken[]" value="CMSC313"> CMSC313 (3.00) Computer Organization & Assembly Language Program</label><br>
-             <label><input type="checkbox" name="classTaken[]" value="CMSC331"> CMSC331 (3.00) Principles of Programming Language</label><br>
-             <label><input type="checkbox" name="classTaken[]" value="CMSC341"> CMSC341 (3.00) Data Structures</label><br>
-             <label><input type="checkbox" name="classTaken[]" value="CMSC411"> CMSC411 (3.00) Computer Architecture</label><br>
-             <label><input type="checkbox" name="classTaken[]" value="CMSC421"> CMSC421 (3.00) Principles of Operating Systems</label><br>
-             <label><input type="checkbox" name="classTaken[]" value="CMSC441"> CMSC441 (3.00) Design and Analysis of Algorithms</label><br>
-             <label><input type="checkbox" name="classTaken[]" value="CMSC447"> CMSC447 (3.00) Software Design and Development</label><br>
+             <label><input type="checkbox" name="classTaken[]" value="CMSC201" id="cmsc201"
+             onchange="toggle201Required(this.checked)"> 
+             CMSC201 (4.00) Computer Science I for Majors</label> <br>
+
+             <label><input type="checkbox" name="classTaken[]" value="CMSC202" id="cmsc202"
+             disabled="disabled"> 
+             CMSC202 (4.00) Computer Science II for Majors</label> <br>
+
+             <label><input type="checkbox" name="classTaken[]" value="CMSC203" id="cmsc203"
+             disabled="disabled"> 
+             CMSC203 (3.00) Discrete Structures</label><br>
+
+             <label><input type="checkbox" name="classTaken[]" value="CMSC304"> 
+             CMSC304 (3.00) Social and Ethical Issues in Information Technology</label><br>
+
+             <label><input type="checkbox" name="classTaken[]" value="CMSC313"> 
+             CMSC313 (3.00) Computer Organization & Assembly Language Program</label><br>
+
+             <label><input type="checkbox" name="classTaken[]" value="CMSC331"> 
+             CMSC331 (3.00) Principles of Programming Language</label><br>
+
+             <label><input type="checkbox" name="classTaken[]" value="CMSC341"> 
+             CMSC341 (3.00) Data Structures</label><br>
+
+             <label><input type="checkbox" name="classTaken[]" value="CMSC411"> 
+             CMSC411 (3.00) Computer Architecture</label><br>
+
+             <label><input type="checkbox" name="classTaken[]" value="CMSC421"> 
+             CMSC421 (3.00) Principles of Operating Systems</label><br>
+
+             <label><input type="checkbox" name="classTaken[]" value="CMSC441"> 
+             CMSC441 (3.00) Design and Analysis of Algorithms</label><br>
+
+             <label><input type="checkbox" name="classTaken[]" value="CMSC447"> 
+             CMSC447 (3.00) Software Design and Development</label><br>
             
             <!-- List of the mandatory math courses you need to take for computer science -->
             <br><b>Required Mathematics Courses:</b><br>
@@ -165,38 +189,7 @@ Default character encoding in HTML5 is UTF-8
     &#x000A9 2016 University of Maryland, Baltimore County | 1000 Hilltop Circle, Baltimore, MD 21250 | 410-455-1000
     </div>
 
-    <script type="text/javascript">
-    	var form = document.getElementById("infoForm");
-    	form.onsubmit = function(){
-    		var accept = true;
-    		var studentId = document.getElementById("studentId").value;
-    		var name = document.getElementById("name").value;
-    		var email = document.getElementById("email").value;
-    		var phone = document.getElementById("phone").value;
-
-    		//reset errors
-    		document.getElementById("idErr").innerHTML = "*";
-    		document.getElementById("namErr").innerHTML = "*";
-    		document.getElementById("emailErr").innerHTML = "*";
-    		document.getElementById("phoneErr").innerHTML = "*";
-    		if(studentId.search(/[a-zA-z]{2}\d{4}/) !== 0){
-    			document.getElementById("idErr").innerHTML = "The id should be 2 letters and 5 numbers";
-    			accept = false;
-    		}
-    		if(name.replace(/[A-Za-z ]+/ ,"") !== "" ){
-    			document.getElementById("namErr").innerHTML = "Name's should only have letters and spaces";
-    			accept = false;
-    		}
-    		if(email.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm, "") !== ""){
-    			document.getElementById("emailErr").innerHTML = "Invalid email";
-    			accept = false;
-    		}
-    		if(phone.search(/\d{3}\-\d{3}\-\d{4}/) != 0){
-    			document.getElementById("phoneErr").innerHTML = "Format should be 410-776-7777";
-    			accept = false;
-    		}
-    		return accept;
-    	};
+    <script type="text/javascript" src="style2.js">
     </script>
 </body>
 </html>
