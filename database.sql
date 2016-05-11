@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: studentdb-maria.gl.umbc.edu
--- Generation Time: Apr 23, 2016 at 02:30 PM
+-- Generation Time: May 11, 2016 at 09:57 PM
 -- Server version: 10.0.24-MariaDB-wsrep
 -- PHP Version: 5.4.44
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `mlanden`
+-- Database: `jmalar1`
 --
 
 -- --------------------------------------------------------
@@ -38,20 +38,26 @@ CREATE TABLE IF NOT EXISTS `Courses` (
 --
 
 INSERT INTO `Courses` (`course_id`, `course_name`, `course_credits`) VALUES
+('BIOL100', 'Concepts of Biology', '4'),
 ('BIOL141', 'Foundations of Biology: Cells, Energy and Organisms', '4'),
 ('BIOL142', 'Foundations of Biology: Ecology and Evolution', '4'),
+('BIOL301', 'Ecology and Evolution', '3'),
 ('CHEM101', 'Principles of Chemistry I', '4'),
 ('CHEM102', 'Principles of Chemistry II', '4'),
 ('CHEM102L', 'Introductory Chemistry Lab I', '2'),
 ('CMSC201', 'Computer Science I for Majors', '4'),
 ('CMSC202', 'Computer Science IU for Majors', '4'),
 ('CMSC203', 'Discrete Structures', '3'),
+('CMSC232', 'Advanced Java Techniques', '2'),
 ('CMSC291', 'Special Topics in Computer Science', '1 - 4'''),
 ('CMSC299', 'Independent Study in Computer Science', '1 - 4'''),
 ('CMSC304', 'Social and Ethical Issues in Information Technology', '3'),
 ('CMSC313', 'Computer Organization and Assembly Language Programming', '3'),
 ('CMSC331', 'Principles of Programming Language', '3'),
 ('CMSC341', 'Data Structures', '3'),
+('CMSC352', 'Women, Gender, and Information Technology', '3'),
+('CMSC391', 'Special Topics in Computer Science', '1 - 4'''),
+('CMSC404', 'The History of Computers and Computing', '3'),
 ('CMSC411', 'Computer Architecture', '3'),
 ('CMSC421', 'Principles of Operating Systems', '3'),
 ('CMSC426', 'Principles of Computer Security', '3'),
@@ -63,7 +69,10 @@ INSERT INTO `Courses` (`course_id`, `course_name`, `course_credits`) VALUES
 ('CMSC436', 'Data Visualization', '3'),
 ('CMSC437', 'Graphical User Interface Programming', '3'),
 ('CMSC441', 'Design and Analysis of Algorithms.', '3'),
+('CMSC442', 'Information and Coding Theory', '3'),
 ('CMSC443', 'Cryptology', '3'),
+('CMSC444', 'Information Assurance', '3'),
+('CMSC446', 'Introduction to Design Patterns', '3'),
 ('CMSC447', 'Software Engineering I', '3'),
 ('CMSC448', 'Software Engineering II', '3'),
 ('CMSC451', 'Automata Theory and Formal Languages', '3'),
@@ -87,7 +96,10 @@ INSERT INTO `Courses` (`course_id`, `course_name`, `course_credits`) VALUES
 ('CMSC484', 'Java Server Technologies', '3'),
 ('CMSC486', 'Mobile Telephony Communications', '3'),
 ('CMSC487', 'Introduction To Network Security', '3'),
+('CMSC491', 'Special Topics in Computer Science', '3'),
 ('CMSC493', 'Capstone Games Group Project', '3'),
+('CMSC495', 'Honors Thesis', '3'),
+('CMSC498', 'Independent Study in Computer Science for Interns & Coop Students', '3'),
 ('CMSC499', 'Independent Study in Computer Science', '1 - 4'''),
 ('GES110', 'Physical Geography', '3'),
 ('GES286', 'Ecploring the Environment: A Geo-Spatial Perspective', '4'),
@@ -116,6 +128,92 @@ CREATE TABLE IF NOT EXISTS `course_taken` (
   KEY `course_id` (`course_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `course_taken`
+--
+
+INSERT INTO `course_taken` (`student_id`, `course_id`, `completed`) VALUES
+('AB29191', 'CMSC201', 'P'),
+('AB29191', 'CMSC202', 'R'),
+('AB29191', 'MATH151', 'P'),
+('AB29191', 'STAT355', 'P'),
+('hu32849', 'CMSC201', 'P'),
+('hu32849', 'MATH151', 'P'),
+('hu32849', 'STAT355', 'P'),
+('JK02010', 'CHEM101', 'P'),
+('JK02010', 'CHEM102', 'P'),
+('JK02010', 'CMSC201', 'P'),
+('JK02010', 'CMSC202', 'P'),
+('JK02010', 'CMSC203', 'P'),
+('JS01921', 'BIOL100', 'P'),
+('JS01921', 'BIOL141', 'P'),
+('JS01921', 'BIOL142', 'P'),
+('JS01921', 'BIOL301', 'P'),
+('JS01921', 'CHEM101', 'P'),
+('JS01921', 'CHEM102', 'P'),
+('JS01921', 'CMSC201', 'P'),
+('JS01921', 'CMSC202', 'P'),
+('JS01921', 'CMSC203', 'P'),
+('JS01921', 'CMSC232', 'P'),
+('JS01921', 'CMSC291', 'P'),
+('JS01921', 'CMSC299', 'P'),
+('JS01921', 'CMSC304', 'P'),
+('JS01921', 'CMSC313', 'P'),
+('JS01921', 'CMSC331', 'P'),
+('JS01921', 'CMSC341', 'P'),
+('JS01921', 'CMSC352', 'P'),
+('JS01921', 'CMSC391', 'P'),
+('JS01921', 'CMSC404', 'P'),
+('JS01921', 'CMSC411', 'P'),
+('JS01921', 'CMSC421', 'P'),
+('JS01921', 'CMSC426', 'P'),
+('JS01921', 'CMSC427', 'P'),
+('JS01921', 'CMSC431', 'P'),
+('JS01921', 'CMSC432', 'P'),
+('JS01921', 'CMSC433', 'P'),
+('JS01921', 'CMSC435', 'P'),
+('JS01921', 'CMSC436', 'P'),
+('JS01921', 'CMSC437', 'P'),
+('JS01921', 'CMSC441', 'P'),
+('JS01921', 'CMSC442', 'P'),
+('JS01921', 'CMSC443', 'P'),
+('JS01921', 'CMSC444', 'P'),
+('JS01921', 'CMSC446', 'P'),
+('JS01921', 'CMSC447', 'P'),
+('JS01921', 'CMSC448', 'P'),
+('JS01921', 'CMSC451', 'P'),
+('JS01921', 'CMSC452', 'P'),
+('JS01921', 'CMSC453', 'P'),
+('JS01921', 'CMSC455', 'P'),
+('JS01921', 'CMSC456', 'P'),
+('JS01921', 'CMSC457', 'P'),
+('JS01921', 'CMSC461', 'P'),
+('JS01921', 'CMSC465', 'P'),
+('JS01921', 'CMSC466', 'P'),
+('JS01921', 'CMSC471', 'P'),
+('JS01921', 'CMSC473', 'P'),
+('JS01921', 'CMSC475', 'P'),
+('JS01921', 'CMSC476', 'P'),
+('JS01921', 'CMSC477', 'P'),
+('JS01921', 'CMSC478', 'P'),
+('JS01921', 'CMSC479', 'P'),
+('JS01921', 'CMSC481', 'P'),
+('JS01921', 'CMSC483', 'P'),
+('JS01921', 'CMSC484', 'P'),
+('JS01921', 'CMSC486', 'P'),
+('JS01921', 'CMSC487', 'P'),
+('JS01921', 'CMSC491', 'P'),
+('JS01921', 'CMSC493', 'P'),
+('JS01921', 'CMSC495', 'P'),
+('JS01921', 'CMSC498', 'P'),
+('JS01921', 'CMSC499', 'P'),
+('JS01921', 'MATH151', 'P'),
+('JS01921', 'MATH152', 'P'),
+('JS01921', 'MATH221', 'P'),
+('JS01921', 'PHYS121', 'P'),
+('JS01921', 'PHYS122', 'P'),
+('JS01921', 'STAT355', 'P');
+
 -- --------------------------------------------------------
 
 --
@@ -129,6 +227,16 @@ CREATE TABLE IF NOT EXISTS `Students` (
   `student_phone` text NOT NULL,
   PRIMARY KEY (`student_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Students`
+--
+
+INSERT INTO `Students` (`student_id`, `student_name`, `student_email`, `student_phone`) VALUES
+('AB29191', 'Jacob Mueller', 'jacb2@umbc.edu', '921-192-1921'),
+('hu32849', 'Joe ONeill', 'joeoneill@gmail.com', '892-232-1232'),
+('JK02010', 'Adam Bryant', 'abryant22@umbc.edu', '920-191-2912'),
+('JS01921', 'WORK', 'w@umbc.edu', '291-192-1921');
 
 --
 -- Constraints for dumped tables
