@@ -441,7 +441,7 @@ else {
 			var text = classes[i].value;
 			var err = document.getElementById(classes[i].name);
 			if(text !== "" && !(suggested.includes(" " + text + " "))){
-				err.innerHTML = "You cannot registerfor this class";
+				err.innerHTML = "You cannot register for this class";
 				accept = false;
 			}else{
 				err.innerHTML = "";
