@@ -47,7 +47,7 @@ Default character encoding in HTML5 is UTF-8
             <p><span class="error">* required field.</span></p><br>
         <form method="post" action="validation.php" id="infoForm">
             Student ID:<br> 
-            <input type="text" name="ID" id="studentId" placeholder="AB123345" maxlength="7" minlength="7">
+            <input type="text" name="ID" id="studentId" placeholder="AB12345" maxlength="7" minlength="7">
             <span class="error" id="idErr">* </span>
             <br>
             Name:<br> 
