@@ -70,7 +70,7 @@ Default character encoding in HTML5 is UTF-8
              <b>Required Computer Science Courses:</b><br>
              <label>
              <input type="checkbox" name="classTaken[]" value="CMSC201" id="cmsc201"
-             onchange="toggle201Required(this.checked);"> 
+             onchange="toggle201Required();"> 
              CMSC201 (4.00) Computer Science I for Majors
              </label> <br>
 
@@ -131,25 +131,26 @@ Default character encoding in HTML5 is UTF-8
              <label>
              <input type="checkbox" name="classTaken[]" value="CMSC447" id="cmsc447"
              disabled="disabled" onchange="need447Only();"> 
-             CMSC447 (3.00) Software Design and Development
+             CMSC447 (3.00) Software Engineering I
              </label><br>
             
             <!-- List of the mandatory math courses you need to take for computer science -->
             <br><b>Required Mathematics Courses:</b><br>
             <label>
-            <input type="checkbox" name="classTaken[]" value="MATH151" id="math151">
+            <input type="checkbox" name="classTaken[]" value="MATH151" id="math151"
+            onchange="toggleMathCourses();">
              MATH151 (4.00) Calculus and Analytic Geometry I
             </label><br>
 
             <label>
             <input type="checkbox" name="classTaken[]" value="MATH152" id="math152"
-            disabled="disabled"> 
+            disabled="disabled" onchange="need341AndMath();"> 
             MATH152 (4.00) Calculus and Analytic Geometry II
             </label><br>
 
             <label>
             <input type="checkbox" name="classTaken[]" value="MATH221" id="math221"
-            disabled="disabled"> 
+            disabled="disabled" onchange="toggleComputerGraphics();"> 
             MATH221 (3.00) Introduction to Linear Algebra
             </label><br>
            
@@ -163,7 +164,8 @@ Default character encoding in HTML5 is UTF-8
             <!-- These are the science courses that a student could have taken (they need 12 credits of a science) which includes a lab -->
             <br><b>Required Science Courses: <br>(Computer science majors must take 12 credits in science courses. <br>Two courses must be from one of the following sequences)</b><br><br>
             <label>
-            <input type="checkbox" name="classTaken[]" value="BIOL100" id="biol100"> 
+            <input type="checkbox" name="classTaken[]" value="BIOL100" id="biol100"
+            onchange="toggleBiologyConcepts();"> 
             BIOL100 - Concepts of Biology (4.00)
             </label><br>
 
@@ -174,7 +176,8 @@ Default character encoding in HTML5 is UTF-8
             </label><br>or<br>
 
             <label>
-            <input type="checkbox" name="classTaken[]" value="BIOL141" id="biol141"> 
+            <input type="checkbox" name="classTaken[]" value="BIOL141" id="biol141"
+            onchange="toggleBiologyFoundations();"> 
             BIOL141 - Foundations of Biology: Cells, Energy and Organisms (4.00)
             </label><br>
 
@@ -185,7 +188,8 @@ Default character encoding in HTML5 is UTF-8
             </label><br>or<br>
 
             <label>
-            <input type="checkbox" name="classTaken[]" value="CHEM101" id="chem101"> 
+            <input type="checkbox" name="classTaken[]" value="CHEM101" id="chem101"
+            onchange="toggleChemistry();"> 
             CHEM101 - Principles of Chemistry I (4.00)
             </label><br>
 
@@ -196,7 +200,8 @@ Default character encoding in HTML5 is UTF-8
             </label><br>or<br>
 
             <label>
-            <input type="checkbox" name="classTaken[]" value="PHYS121" id="phys121"> 
+            <input type="checkbox" name="classTaken[]" value="PHYS121" id="phys121"
+            onchange="togglePhysics();"> 
             PHYS121 - Introductory Physics I (4.00)
             </label><br>
 
@@ -279,7 +284,7 @@ Default character encoding in HTML5 is UTF-8
             </label><br>
 
             <label>
-            <input type="checkbox" name="classTaken[]" value="CMSC435" id="cmsc433"
+            <input type="checkbox" name="classTaken[]" value="CMSC435" id="cmsc435"
             disabled="disabled" onchange="toggleCapstone();"> 
             CMSC435 (3.00) Computer Graphics
             </label><br>
@@ -382,7 +387,7 @@ Default character encoding in HTML5 is UTF-8
 
             <label>
             <input type="checkbox" name="classTaken[]" value="CMSC471" id="cmsc471"
-            disabled="disabled" onchange="need471Only(); toggleCapstone();"> 
+            disabled="disabled" onchange="need471Only();"> 
             CMSC471 (3.00) Introduction to Artificial Intelligence
             </label><br>
 
