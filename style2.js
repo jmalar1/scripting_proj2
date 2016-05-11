@@ -527,8 +527,16 @@ var form = document.getElementById("infoForm");
     			document.getElementById("namErr").innerHTML = "Name's should only have letters and spaces";
     			accept = false;
     		}
+    		if(name.length < 1){
+    			document.getElementById("namErr").innerHTML = "Please write your name before submitting";
+    			accept = false;
+    		}
     		if(email.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm, "") !== ""){
     			document.getElementById("emailErr").innerHTML = "Invalid email";
+    			accept = false;
+    		}
+    		if(email.length < 1){
+    			document.getElementById("emailErr").innerHTML = "Please write your email before submitting";
     			accept = false;
     		}
     		if(phone.search(/\d{3}\-\d{3}\-\d{4}/) !== 0){
